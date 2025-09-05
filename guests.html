@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest Information | The Beach House on Suttons</title>
+    <meta name="description" content="Your guide to staying at The Beach House on Suttons.">
+    
+    <!-- IMPORTANT: Prevent this page from being indexed by search engines -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Arial:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    
+    <!-- Shared Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Guest-specific Styles -->
+    <style>
+        .guest-nav {
+            background-color: var(--color-primary-dark);
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .guest-nav-list {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .guest-nav-list a {
+            color: var(--color-light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+        .guest-nav-list a:hover {
+            background-color: var(--color-primary);
+        }
+        .info-section {
+            padding-top: 5rem;
+            margin-top: -3rem; /* Offset for sticky nav */
+        }
+        .info-card {
+            background: var(--color-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .info-card h3 {
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        .attraction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .attraction-item {
+            text-align: center;
+        }
+        .attraction-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            background-color: #eee;
+        }
+        @media (min-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+
+    <!-- Favicon Code from index.html -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#005f73">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+    <nav class="guest-nav">
+        <ul class="guest-nav-list container">
+            <li><a href="#welcome">Welcome</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#facilities">Facilities</a></li>
+            <li><a href="#things-to-do">Things to Do</a></li>
+            <li><a href="#emergencies">Emergencies</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section id="welcome" class="info-section container">
+            <h2>Welcome to The Beach House on Suttons</h2>
+            <div class="info-card" style="text-align: center;">
+                <p>Thank you for choosing to stay with us, we hope you have a relaxing and memorable time. This guide aims to provide everything you need to know to make the most of your time here.</p>
+                <p>If you enjoy your stay, please leave us a testimonial. Also don't forget to leave a review about your stay. </p>
+                <button id="open-testimonial-btn" class="btn">Leave a Testimonial</button>
+                <p>If we missed any information, or you notice anything broken or not working correctly in the apartment, please let us know so we can fix it promptly. Thank you.</p>
+                <button id="open-report-btn" class="btn">Report an Issue</button>                
+            </div>
+        </section>
+
+        <section id="how-it-works" class="info-section container">
+            <h2>How Things Work</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><i class="fas fa-clock fa-fw"></i> Arrival & Departure</h3>
+                    <ul>
+                        <li><strong>Check-in Time:</strong> From 2:00 PM</li>
+                        <li><strong>Check-out Time:</strong> By 11:00 AM</li>
+                    </ul>
+                    <p>Late check-out may be available upon request, subject to availability. Please ask us in advance.</p>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-key fa-fw"></i> Access - Keys, Lift & Garage</h3>
+                    <p>You have been provided with two sets of keys.</p>
+                    <ul>
+                        <li>The small black fobs opens the front door, and grants access to Floor 1 (this apartment) and B1 (the carpark) in the lift.</li>
+                        <li>The larger grey fob opens the main garage door. Entry to the garage is via Sutton Street.</li>
+                        <li>Your allocated secure parking spot is #7.</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-paw fa-fw"></i> Pet Policy</h3>
+                    <p>We have a strict no-pet policy. However, requests may be considered on a case-by-case basis and require our specific approval for each booking.</p>
+                </div>                
+                <div class="info-card">
+                    <h3><i class="fas fa-wifi fa-fw"></i> Internet</h3>
+                    <p>Wireless internet is provided via the 5G router located in the broom cupboard. The data allowance is large but not unlimited. Please refrain from very large downloads.</p>
+                    <ul>
+                        <li><strong>Network:</strong> Unit_7</li>
+                        <li><strong>Password:</strong> flowerfold</li>                    
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-tv fa-fw"></i> Smart TV</h3>
+                    <p>The TV provides free-to-air channels. You can also connect your own devices or log in to streaming apps.</p>
+                    <ul>
+                        <li>Use the provided HDMI cable to connect laptops.</li>
+                        <li>Access apps like YouTube and Netflix using your own account. Please remember to log out before you leave.</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-wind fa-fw"></i> Air Conditioning</h3>
+                    <p>The apartment has a ducted air-conditioning system for your comfort.</p>
+                    <ul>
+                        <li>The system can take a few minutes to start up.</li>
+                        <li>Please be sensible with temperature settings; extremely low settings can cause condensation.</li>
+                        <li><strong>Important:</strong> Please turn the system off when opening balcony doors or when you leave the apartment.</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-plate-dishwasher fa-fw"></i> Appliances</h3>
+                    <p>On departure, please place your last load of dishes in the dishwasher and start the cycle.</p>
+                    <ul>
+                        <li>Dishwasher tablets are located under the sink.</li>
+                        <li>For detailed instructions, you can view the user manual.</li>
+                    </ul>
+                    <a href="docs/dishwasher-manual.pdf" target="_blank" class="btn">View Dishwasher Manual</a>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-trash-alt fa-fw"></i> Garbage Disposal</h3>
+                    <ul>
+                        <li>The garbage disposal chute is through the door to the left of the lift on level 1. Please ensure all garbage is double-bagged before disposal.</li>
+                        <li>A recycling bin is located near the lift in the carpark (B1).</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-flag-checkered fa-fw"></i> Exit Checklist</h3>
+                    <p>Ready to depart? Please review our quick checklist to ensure a smooth checkout process.</p>
+                    <a href="exit-checklist.html" class="btn">View Checklist</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="facilities" class="info-section container">
+            <h2>Complex Facilities</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><i class="fas fa-swimmer fa-fw"></i> Pool, Gym & BBQ</h3>
+                    <p>You have full access to the complex facilities located on the lower ground floor.</p>
+                    <ul>
+                        <li>The BBQ area can be booked by other residents. Please check the booking sheet in the foyer before use.</li>
+                        <li>Please observe the posted house rules for the Pool and Gym areas.</li>
+                    </ul>
+                    <a href="building-rules.html" class="btn" style="margin-top: 1rem;">View Building Rules</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="things-to-do" class="info-section container">
+            <h2>Things to Do</h2>
+            <div class="info-card">
+                <h3><i class="fas fa-utensils fa-fw"></i> Cafés & Restaurants</h3>
+                <div class="attraction-grid">
+                    <div class="attraction-item"><img src="images/boneys_expresso.png" alt="Cafe"><p>Boney's Expresso - Great Coffee</p></div>
+                    <div class="attraction-item"><img src="images/rustic_olive.png" alt="Italian Restaurant"><p>The Rustic Olive - Popular Italian Restaurant</p></div>
+                    <div class="attraction-item"><img src="images/mammas.png" alt="Italian Restaurant"><p>Mammas - Classy Italian Restaurant</p></div>                    
+                </div>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-umbrella-beach fa-fw"></i> Local Attractions</h3>
+                 <div class="attraction-grid">
+                    <div class="attraction-item"><img src="images/redcliffe_jetty.png" alt="Jetty"><p>Redcliffe Jetty</p></div>
+                    <div class="attraction-item"><img src="images/lagoon.png" alt="Lagoon"><p>Settlement Cove Lagoon</p></div>
+                    <div class="attraction-item"><img src="images/bee_gees_way.png" alt="Bee Gees Way"><p>Bee Gees Way</p></div>
+                </div>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-star fa-fw"></i> Seasonal & Local Events</h3>
+                <p><strong>Redcliffe Markets:</strong> Every Sunday from 8am to 2pm, Redcliffe Parade comes alive with one of the best markets in the region.</p>
+                <p><strong>Whale Watching (June - October):</strong> During the winter months, you can book a whale watching cruise. Tours leave directly from the Redcliffe Jetty and can be booked at the office in Comino's Arcade on the waterfront.</p>
+            </div>
+        </section>
+
+        <section id="emergencies" class="info-section container">
+            <h2>Emergencies & Important Contacts</h2>
+             <div class="info-grid">
+                <div class="info-card">
+                    <h3><i class="fas fa-house-fire fa-fw"></i> Emergency Services</h3>
+                    <p>For Police, Fire, or Ambulance, please dial:</p>
+                    <h3 style="font-size: 2rem; margin-top:0.5rem;">000</h3>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-user-shield fa-fw"></i> Our Contact Details</h3>
+                    <p>For urgent issues with the apartment, please contact us:</p>
+                    <p><strong>Kayleen:</strong> 0429055655</p>
+                    <p><strong>Paul:</strong> 0409055655</p>
+                </div>
+                 <div class="info-card">
+                    <h3><i class="fas fa-building fa-fw"></i> Building Manager</h3>
+                    <p>For issues with common property (e.g., lifts, pool):</p>
+                    <p><strong>Contact:</strong> [Building Manager Details]</p>
+                </div>
+                 <div class="info-card">
+                    <h3><i class="fas fa-first-aid fa-fw"></i> Medical</h3>
+                    <p><strong>Redcliffe Hospital Emergency Department:</strong> Anzac Avanue, (07) 3883 7777</p>
+                    <p><strong>Nearest Pharmacy:</strong> Redcliffe Chempro Chemist, 65 Redcliffe Parade</p>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-route fa-fw"></i> Evacuation Plan</h3>
+                    <p>In case of an emergency requiring evacuation, please familiarise yourself with the evacuation plan which is displayed on the wall next to the lift on each floor.</p>                    
+                </div>
+            </div>
+            <div class="info-card" style="margin-top: 2rem;">
+                <h3><i class="fas fa-wrench fa-fw"></i> Report a Problem</h3>
+                <p>If you notice anything broken or not working correctly in the apartment, please let us know so we can fix it promptly. Thank you.</p>
+                <button id="open-report-btn" class="btn">Report an Issue</button>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="container">
+        <p>&copy; 2025 PD & KJ Thompson. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Testimonial Modal -->
+    <div id="testimonial-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-testimonial-btn">&times;</span>
+            <h2>Leave a Testimonial</h2>
+            <p>Thank you for taking the time to share your experience!</p>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="6d4b0ccf-db90-4fc0-b26d-3d675ee1f2ab">
+                <input type="hidden" name="subject" value="New Testimonial from Guest">
+                <input type="hidden" name="from_name" value="The Beach House Guest Info">
+
+                <div class="form-group">
+                    <label for="testimonial-name">Your Name:</label>
+                    <input type="text" id="testimonial-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="testimonial-message">Your Testimonial:</label>
+                    <textarea id="testimonial-message" name="testimonial" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Submit Testimonial</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Report a Problem Modal -->
+    <div id="report-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-report-btn">&times;</span>
+            <h2>Report an Issue</h2>
+            <p>Please provide details about the problem you've encountered.</p>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="6d4b0ccf-db90-4fc0-b26d-3d675ee1f2ab">
+                <input type="hidden" name="subject" value="New Problem Report from Guest">
+                <input type="hidden" name="from_name" value="The Beach House Guest Info">
+
+                <div class="form-group">
+                    <label for="report-name">Your Name:</label>
+                    <input type="text" id="report-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="report-contact">Your Contact Number (optional):</label>
+                    <input type="tel" id="report-contact" name="contact_phone">
+                </div>
+                <div class="form-group">
+                    <label for="report-message">Description of the problem:</label>
+                    <textarea id="report-message" name="problem_description" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Report</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Guest Information JavaScript -->
+    <script src="guests.js"></script>
+
+</body>
+</html>

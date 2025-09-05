@@ -1,0 +1,257 @@
+/* --- CSS VARIABLES & BASE STYLES --- */
+:root {
+    --color-primary: #005f73;        /* Sea Blue */
+    --color-primary-dark: #003e4d;
+    --color-secondary: #e9d8a6;      /* Sandy Beige */
+    --color-accent: #ee9b00;         /* Sunset Orange */
+    --color-light: #ffffff;
+    --color-dark: #333333;
+    --font-heading: 'Roboto', sans-serif;
+    --font-body: 'Arial', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--color-dark);
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2 {
+    font-family: var(--font-heading);
+    color: var(--color-primary-dark);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.2rem;
+}
+
+section {
+    padding: 4rem 0;
+}
+
+section:nth-child(even) {
+    background-color: var(--color-light);
+}
+
+/* --- BUTTONS --- */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--color-accent);
+    color: var(--color-light);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ca8200; /* Darker orange */
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    min-height: 90vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://via.placeholder.com/1920x1080.png/005f73/FFFFFF?text=View+of+Suttons+Beach) no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--color-light);
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    color: var(--color-light);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 1rem auto 2rem;
+}
+
+/* --- FEATURES SECTION --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.feature-item i {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+/* --- INTRO SECTION --- */
+.intro-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --- GALLERY SECTION --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* --- LOCATION SECTION --- */
+.location-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.location-map iframe {
+    width: 100%;
+    border-radius: 5px;
+    min-height: 350px;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: var(--color-primary-dark);
+    color: var(--color-light);
+}
+
+/* --- MODAL STYLES --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 2rem;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* --- FORM STYLES --- */
+.form-group {
+    margin-bottom: 1rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#availability-status {
+    margin-top: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+.status-available { color: green; }
+.status-unavailable { color: red; }
+
+.enquiry-dates-display {
+    background-color: #eef7ff;
+    border-left: 5px solid var(--color-primary);
+    padding: 1rem;
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+/* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
+@media (min-width: 600px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    .location-content {
+        flex-direction: row;
+        align-items: center;
+    }
+    .location-text, .location-map {
+        flex: 1;
+    }
+}
+
+@media (min-width: 992px) {
+    .features-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
