@@ -38,12 +38,24 @@
             color: var(--color-primary);
             margin-top: 0;
         }
+        .rule-card p + p {
+            margin-top: 0.75rem;
+        }
+        /* Highlighted card for rules with a cost or safety consequence */
+        .rule-card-important {
+            border-left: 5px solid var(--color-accent);
+            background: #fff8e6;
+        }
+        .rule-card-important h3 {
+            color: #b37400;
+        }
     </style>
 
     <!-- Favicon Code -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#005f73">
     <meta name="theme-color" content="#ffffff">
@@ -60,6 +72,12 @@
         <div class="rule-card">
             <h3>Basement Access</h3>
             <p>When driving in or out of the basement, turn your headlights on and go slow. To maintain security, after you pass through the gate, please wait for it to close behind you before driving away.</p>
+        </div>
+
+        <div class="rule-card rule-card-important">
+            <h3><i class="fas fa-charging-station fa-fw"></i> Basement Power Outlets &amp; EV Charging</h3>
+            <p>The power outlets (GPOs) in the building basement <strong>must not be used</strong> for charging an electric vehicle, or for running any other equipment. These outlets are metered to the body corporate rather than to individual units, so any electricity drawn from them is paid for by all owners in the building.</p>
+            <p>There is <strong>no EV charging available anywhere on site</strong>. If you are travelling in an electric vehicle, please plan to use one of the public charging stations in the Redcliffe area.</p>
         </div>
 
         <div class="rule-card">
@@ -110,7 +128,7 @@
     </main>
     
     <footer class="container">
-        <p>&copy; 2025 PD & KJ Thompson. All Rights Reserved.</p>
+        <p>&copy; 2026 PD & KJ Thompson. All Rights Reserved.</p>
     </footer>
 
 </body>

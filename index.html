@@ -19,8 +19,9 @@
 
     <!-- === START: FAVICON CODE GENERATED FROM REALFAVICONGENERATOR.NET === -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#005f73">
     <meta name="theme-color" content="#ffffff">
@@ -33,7 +34,17 @@
         <div class="hero-content">
             <h1>The Beach House on Suttons – Your Luxury Oceanfront Escape</h1>
             <p>Unwind in our spacious 3-bedroom apartment with ocean views over Moreton Bay.</p>
-            <a href="#enquiry-modal" class="btn btn-primary" id="open-enquiry-btn">Enquire Now</a>
+            <div class="hero-ctas">
+                <a href="https://www.airbnb.com.au/rooms/46904216" class="btn btn-primary" target="_blank" rel="noopener">
+                    <i class="fab fa-airbnb"></i> Book on Airbnb
+                </a>
+                <a href="https://www.homeexchange.com/holiday-home/2906465" class="btn btn-secondary" target="_blank" rel="noopener">
+                    <i class="fas fa-right-left"></i> Swap on HomeExchange
+                </a>
+            </div>
+            <p class="hero-note">
+                Not a HomeExchange member yet? <a href="#enquiry-modal" id="open-enquiry-btn">Get in touch</a> and we'll send you an introduction.
+            </p>
         </div>
     </header>
 
@@ -71,7 +82,11 @@
                 <div class="feature-item">
                     <i class="fas fa-spa"></i>
                     <p><strong>Spa Bath:</strong> Relax in the ensuite spa bath</p>
-                </div>                
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-charging-station"></i>
+                    <p><strong>No EV Charging:</strong> Sorry, not available on site, but public chargers are available in the area</p>
+                </div>
             </div>
         </section>
 
@@ -83,6 +98,25 @@
             </div>
         </section>
         
+        <section id="booking" class="container">
+            <h2>How to Book</h2>
+            <div class="booking-grid">
+                <div class="booking-card">
+                    <i class="fab fa-airbnb"></i>
+                    <h3>Holiday letting</h3>
+                    <p>All short-term bookings are handled through Airbnb, where you'll find live availability, current rates and our guest reviews.</p>
+                    <a href="https://www.airbnb.com.au/rooms/46904216" class="btn btn-primary" target="_blank" rel="noopener">View our Airbnb listing</a>
+                </div>
+                <div class="booking-card">
+                    <i class="fas fa-right-left"></i>
+                    <h3>Home exchange</h3>
+                    <p>We also swap through HomeExchange. If you're already a member, you can request an exchange straight from our listing.</p>
+                    <a href="https://www.homeexchange.com/holiday-home/2906465" class="btn btn-secondary" target="_blank" rel="noopener">View our HomeExchange listing</a>
+                    <p class="booking-aside">Not a member yet? <a href="#enquiry-modal" class="open-enquiry">Contact us</a> and we'll send you an introduction to the platform.</p>
+                </div>
+            </div>
+        </section>
+
         <section id="gallery">
             <div class="container">
                 <h2>Gallery</h2>
@@ -121,29 +155,29 @@
     </main>
 
     <footer class="container">
-        <p>&copy; 2025 PD & KJ Thompson. All Rights Reserved. Gunge Heifers.</p>
+        <p>&copy; 2026 PD & KJ Thompson. All Rights Reserved. Gunge Heifers.</p>
     </footer>
 
     <!-- Enquiry Form Modal (Hidden by default) -->
     <div id="enquiry-modal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <h2>Send Your Enquiry</h2>
-            <p>To enquire about your preferred dates, please fill out the form below. We'll get back to you shortly to confirm availability.</p>
-            
-            <!-- IMPORTANT: Replace with your Web3Forms access key -->
+            <h2>Get in Touch</h2>
+            <p>To book dates, please use our <a href="https://www.airbnb.com.au/rooms/46904216" target="_blank" rel="noopener">Airbnb listing</a> or our <a href="https://www.homeexchange.com/holiday-home/2906465" target="_blank" rel="noopener">HomeExchange listing</a>. Use the form below if you'd like a HomeExchange introduction or have a general question.</p>
+
+            <!-- Submissions are handled by Web3Forms - see README.md -->
             <form action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="6d4b0ccf-db90-4fc0-b26d-3d675ee1f2ab">
-                <input type="hidden" name="subject" value="New Holiday Enquiry from Website">
+                <input type="hidden" name="subject" value="New Enquiry from Beach House Website">
                 <input type="hidden" name="from_name" value="The Beach House Website">
 
                 <div class="form-group">
-                    <label for="enquiry-check-in">Check-in Date:</label>
-                    <input type="date" id="enquiry-check-in" name="check-in" required>
-                </div>
-                <div class="form-group">
-                    <label for="enquiry-check-out">Check-out Date:</label>
-                    <input type="date" id="enquiry-check-out" name="check-out" required>
+                    <label for="enquiry-reason">What can we help with?</label>
+                    <select id="enquiry-reason" name="reason">
+                        <option value="HomeExchange introduction">I'd like an introduction to HomeExchange</option>
+                        <option value="General question">I have a general question about the property</option>
+                        <option value="Other">Something else</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="name">Full Name:</label>
@@ -161,7 +195,7 @@
                     <label for="message">Message (optional):</label>
                     <textarea id="message" name="message" rows="4"></textarea>
                 </div>
-                <button type="submit" class="btn">Send Enquiry</button>
+                <button type="submit" class="btn">Send Message</button>
             </form>
         </div>
     </div>

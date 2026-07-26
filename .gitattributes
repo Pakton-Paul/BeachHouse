@@ -1,0 +1,21 @@
+# Normalise line endings so CloudStation / Windows editors don't produce
+# whole-file diffs. Text files are stored LF in the repo and checked out
+# with native endings on Windows.
+* text=auto
+
+*.html  text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+*.webmanifest text eol=lf
+
+# Binary assets - never touch these
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.svg   binary
+*.pdf   binary
+*.zip   binary

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Departure Checklist | The Beach House on Suttons</title>
     <meta name="description" content="Guest departure checklist for The Beach House on Suttons.">
-    
+
     <!-- IMPORTANT: Prevent this page from being indexed by search engines -->
     <meta name="robots" content="noindex, nofollow">
 
@@ -13,10 +13,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Arial:wght@400;700&display=swap" rel="stylesheet">
-    
+
     <!-- Font Awesome (for icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    
+
     <!-- Shared Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
@@ -27,6 +27,62 @@
             margin-bottom: 2rem;
             padding-top: 2rem;
         }
+
+        /* --- Sticky progress bar --- */
+        .progress-bar-wrap {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0.75rem 0;
+        }
+        .progress-inner {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .progress-track {
+            flex: 1;
+            height: 10px;
+            background: #e4e4e4;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--color-primary);
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+        .progress-label {
+            font-size: 0.9rem;
+            color: #666;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        .reset-btn {
+            background: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px 12px;
+            font-size: 0.85rem;
+            color: #666;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .reset-btn:hover {
+            border-color: var(--color-primary-dark);
+            color: var(--color-primary-dark);
+        }
+
+        /* --- Checklist sections --- */
         .checklist-section {
             background: var(--color-light);
             border-radius: 8px;
@@ -36,7 +92,7 @@
         }
         .checklist-section h3 {
             color: var(--color-primary);
-            border-bottom: 2px solid var(--color-accent-light);
+            border-bottom: 2px solid #e4e4e4;
             padding-bottom: 0.5rem;
             margin-bottom: 1rem;
         }
@@ -49,94 +105,238 @@
             display: flex;
             align-items: flex-start;
             gap: 1rem;
-            padding: 0.5rem 0;
+            padding: 0.6rem 0.5rem;
             line-height: 1.5;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.15s;
+            user-select: none;
         }
-        .checklist .fa-square {
-            color: var(--color-primary-dark);
-            margin-top: 0.25rem; /* Align icon with text */
+        .checklist li:hover {
+            background: #f2f8fa;
+        }
+        .checklist li:focus-visible {
+            outline: 2px solid var(--color-primary-dark);
+            outline-offset: 2px;
+        }
+        .checklist li.done {
+            opacity: 0.55;
+        }
+        .checklist li.done .check-text {
+            text-decoration: line-through;
+        }
+
+        .check-box {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--color-primary);
+            border-radius: 5px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .check-box i {
+            color: #fff;
+            font-size: 12px;
+            display: none;
+            margin: 0;
+        }
+        .checklist li.done .check-box {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+        .checklist li.done .check-box i {
+            display: block;
+        }
+
+        .all-done {
+            text-align: center;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            background: #eaf6ea;
+            border-left: 5px solid #4a9b4a;
+            border-radius: 8px;
+            display: none;
+        }
+        .all-done.visible {
+            display: block;
+        }
+        .all-done i {
+            color: #4a9b4a;
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
         }
     </style>
 
     <!-- Favicon Code -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#005f73">
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
 
+    <!-- Sticky progress indicator -->
+    <div class="progress-bar-wrap">
+        <div class="progress-inner">
+            <span class="progress-label">Progress</span>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <span class="progress-label" id="progress-text">0 / 0</span>
+            <button class="reset-btn" id="reset-btn" type="button">Reset</button>
+        </div>
+    </div>
+
     <main class="container">
         <header class="page-header">
             <h1>Guest Departure Checklist</h1>
             <p>Thank you for staying with us! Please follow these steps for a smooth checkout.</p>
+            <p><small>Tap each item to tick it off. Your progress is saved in this browser.</small></p>
             <a href="guests.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Guest Info</a>
         </header>
+
+        <div class="all-done" id="all-done">
+            <i class="fas fa-circle-check"></i><strong>That's everything — thank you!</strong>
+            <p>Have a safe trip home. We'd love to see you again.</p>
+        </div>
 
         <section class="checklist-section">
             <h3>General</h3>
             <ul class="checklist">
-                <li><i class="far fa-square"></i>Remove all personal belongings (check cupboards, drawers, under beds, bathrooms).</li>
-                <li><i class="far fa-square"></i>Close and latch all windows and sliding doors.</li>
-                <li><i class="far fa-square"></i>Return any moved furniture to its original position (including on the balcony).</li>
-                <li><i class="far fa-square"></i>Give the apartment a "broom clean" tidy-up.</li>
+                <li data-id="gen-1"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Remove all personal belongings (check cupboards, drawers, under beds, bathrooms).</span></li>
+                <li data-id="gen-2"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Close and latch all windows and sliding doors.</span></li>
+                <li data-id="gen-3"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Return any moved furniture to its original position (including on the balcony).</span></li>
+                <li data-id="gen-4"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Give the apartment a "broom clean" tidy-up.</span></li>
             </ul>
         </section>
 
         <section class="checklist-section">
-            <h3>Kitchen & Dining</h3>
+            <h3>Kitchen &amp; Dining</h3>
             <ul class="checklist">
-                <li><i class="far fa-square"></i>Put your last load of dishes in the dishwasher and turn it on.</li>
-                <li><i class="far fa-square"></i>Clean, dry and put away any kitchenware that is not going into the dishwasher.</li>
-                <li><i class="far fa-square"></i>Wipe down kitchen benches, stove, and the dining table.</li>
-                <li><i class="far fa-square"></i>Empty the fridge and freezer of any perishable food items.</li>
-                <li><i class="far fa-square"></i>Take away your rubbish and recycling to the designated areas.</li>
+                <li data-id="kit-1"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Put your last load of dishes in the dishwasher and turn it on.</span></li>
+                <li data-id="kit-2"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Clean, dry and put away any kitchenware that is not going into the dishwasher.</span></li>
+                <li data-id="kit-3"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Wipe down kitchen benches, stove, and the dining table.</span></li>
+                <li data-id="kit-4"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Empty the fridge and freezer of any perishable food items.</span></li>
+                <li data-id="kit-5"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Take away your rubbish and recycling to the designated areas.</span></li>
             </ul>
         </section>
 
         <section class="checklist-section">
-            <h3>Laundry & Bathrooms</h3>
+            <h3>Laundry &amp; Bathrooms</h3>
             <ul class="checklist">
-                <li><i class="far fa-square"></i>Place used bathroom and beach towels in the main bathroom's shower or bath.</li>
-                <li><i class="far fa-square"></i>Leave used beds unmade (we will strip them).</li>
-                <li><i class="far fa-square"></i>If heavily soiled, a quick wipe of bathroom surfaces is appreciated.</li>
-                <li><i class="far fa-square"></i>Put the clothes drying rack away (do not leave it on the balcony).</li>
+                <li data-id="lau-1"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Place used bathroom and beach towels in the main bathroom's shower or bath.</span></li>
+                <li data-id="lau-2"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Leave used beds unmade (we will strip them).</span></li>
+                <li data-id="lau-3"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">If heavily soiled, a quick wipe of bathroom surfaces is appreciated.</span></li>
+                <li data-id="lau-4"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Put the clothes drying rack away (do not leave it on the balcony).</span></li>
             </ul>
         </section>
 
         <section class="checklist-section">
             <h3>Outdoor Areas</h3>
             <ul class="checklist">
-                <li><i class="far fa-square"></i>Bring in the cushions from the outdoor chairs.</li>
-                <li><i class="far fa-square"></i>If you used our bicycles, please make sure they are locked up back in the garage where you found them.</li>
+                <li data-id="out-1"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Bring in the cushions from the outdoor chairs.</span></li>
+                <li data-id="out-2"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">If you used our bicycles, please make sure they are locked up back in the garage where you found them.</span></li>
             </ul>
         </section>
 
         <section class="checklist-section">
             <h3>Final Check</h3>
             <ul class="checklist">
-                <li><i class="far fa-square"></i>Have you left any USB chargers, clothes or food behind?</li>
-                <li><i class="far fa-square"></i>Switch off air-conditioning, lights and all appliances.</li>
-                <li><i class="far fa-square"></i>Send a quick message to the host to confirm departure (optional but appreciated).</li>
+                <li data-id="fin-1"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Have you left any USB chargers, clothes or food behind?</span></li>
+                <li data-id="fin-2"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Switch off air-conditioning, lights and all appliances.</span></li>
+                <li data-id="fin-3"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Send a quick message to the host to confirm departure (optional but appreciated).</span></li>
             </ul>
         </section>
 
         <section class="checklist-section">
             <h3>Locking Up</h3>
             <ul class="checklist">
-                <li><i class="far fa-square"></i>Remove your car from the garage first! Park it out front or in the visitors parking area.</li>
-                <li><i class="far fa-square"></i>Leave all keys/fobs in the basket on the cupboard in the hallway.</li>
-                <li><i class="far fa-square"></i>Lock and pull the door shut behind you when you leave. You do not need a fob to use the lift to get back down.</li>
+                <li data-id="loc-1"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Remove your car from the garage first! Park it out front or in the visitors parking area.</span></li>
+                <li data-id="loc-2"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Leave all keys/fobs in the basket on the cupboard in the hallway.</span></li>
+                <li data-id="loc-3"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-text">Lock and pull the door shut behind you when you leave. You do not need a fob to use the lift to get back down.</span></li>
             </ul>
         </section>
 
     </main>
-    
+
     <footer class="container">
-        <p>&copy; 2025 PD & KJ Thompson. All Rights Reserved.</p>
+        <p>&copy; 2026 PD &amp; KJ Thompson. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        (function () {
+            var items = document.querySelectorAll('.checklist li');
+            var total = items.length;
+            var STORAGE_KEY = 'bhos_exit_checklist_v1';
+
+            var fill = document.getElementById('progress-fill');
+            var text = document.getElementById('progress-text');
+            var allDone = document.getElementById('all-done');
+
+            function getState() {
+                try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+                catch (e) { return {}; }
+            }
+
+            function saveState(state) {
+                try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+                catch (e) { /* private browsing - progress just won't persist */ }
+            }
+
+            function updateProgress() {
+                var done = document.querySelectorAll('.checklist li.done').length;
+                var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+                fill.style.width = pct + '%';
+                text.textContent = done + ' / ' + total;
+                allDone.classList.toggle('visible', total > 0 && done === total);
+            }
+
+            function toggle(li) {
+                li.classList.toggle('done');
+                li.setAttribute('aria-checked', li.classList.contains('done'));
+                var state = getState();
+                state[li.dataset.id] = li.classList.contains('done');
+                saveState(state);
+                updateProgress();
+            }
+
+            var state = getState();
+            items.forEach(function (li) {
+                // Make each row behave like a checkbox for keyboard and screen reader users
+                li.setAttribute('role', 'checkbox');
+                li.setAttribute('tabindex', '0');
+
+                if (li.dataset.id && state[li.dataset.id]) li.classList.add('done');
+                li.setAttribute('aria-checked', li.classList.contains('done'));
+
+                li.addEventListener('click', function () { toggle(li); });
+                li.addEventListener('keydown', function (e) {
+                    if (e.key === ' ' || e.key === 'Enter') {
+                        e.preventDefault();
+                        toggle(li);
+                    }
+                });
+            });
+
+            document.getElementById('reset-btn').addEventListener('click', function () {
+                items.forEach(function (li) {
+                    li.classList.remove('done');
+                    li.setAttribute('aria-checked', 'false');
+                });
+                saveState({});
+                updateProgress();
+            });
+
+            updateProgress();
+        })();
+    </script>
 
 </body>
 </html>
