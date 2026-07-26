@@ -135,6 +135,13 @@ Then visit:
 - **Images** are PNG in `images/`, referenced with lowercase underscore names.
   Some `<img>` tags carry leftover `?text=...` query strings; these are harmless
   and can be stripped when touching that markup.
+- **Bump the asset version when you change `style.css` or a `.js` file.** Every
+  page links them with a version query string, e.g.
+  `<link rel="stylesheet" href="style.css?v=20260726">`. Browsers cache these
+  files aggressively, so without a bump a visitor gets new HTML styled by an old
+  stylesheet — cards lose their backgrounds, buttons come out the wrong colour.
+  Change the date on every page that links the file you edited. HTML pages
+  themselves are not cached the same way and need no version string.
 - **Line endings** are normalised by `.gitattributes` to LF in the repository.
   Without it, editing on Windows produces diffs where every line of every file
   appears changed.
